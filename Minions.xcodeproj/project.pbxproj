@@ -10,6 +10,7 @@
 		94D5E8691D212FA500344AF6 /* Minions.h in Headers */ = {isa = PBXBuildFile; fileRef = 94D5E8681D212FA500344AF6 /* Minions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		94D5E8701D212FA600344AF6 /* Minions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94D5E8651D212FA500344AF6 /* Minions.framework */; };
 		94D5E8751D212FA600344AF6 /* MinionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D5E8741D212FA600344AF6 /* MinionsTests.swift */; };
+		94D5E8A81D21912D00344AF6 /* CMAsyncHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D5E8A71D21912D00344AF6 /* CMAsyncHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		94D5E86F1D212FA600344AF6 /* MinionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MinionsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		94D5E8741D212FA600344AF6 /* MinionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinionsTests.swift; sourceTree = "<group>"; };
 		94D5E8761D212FA600344AF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		94D5E8A71D21912D00344AF6 /* CMAsyncHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMAsyncHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 		94D5E8671D212FA500344AF6 /* Minions */ = {
 			isa = PBXGroup;
 			children = (
+				94D5E8A91D21913000344AF6 /* Classes */,
 				94D5E8681D212FA500344AF6 /* Minions.h */,
 				94D5E86A1D212FA500344AF6 /* Info.plist */,
 			);
@@ -84,6 +87,14 @@
 				94D5E8761D212FA600344AF6 /* Info.plist */,
 			);
 			path = MinionsTests;
+			sourceTree = "<group>";
+		};
+		94D5E8A91D21913000344AF6 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				94D5E8A71D21912D00344AF6 /* CMAsyncHelper.swift */,
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,6 +205,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94D5E8A81D21912D00344AF6 /* CMAsyncHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +322,7 @@
 		94D5E87A1D212FA600344AF6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -321,12 +334,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = de.clapp.Minions;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		94D5E87B1D212FA600344AF6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
