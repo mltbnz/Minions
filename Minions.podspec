@@ -7,7 +7,7 @@ Pod::Spec.new do |spec|
   spec.authors = { "Malte Bünz" => 'mb@clapp.de' }
   spec.social_media_url = "http://twitter.com/vanbillstedt"
 
-  spec.platform = :ios, "9.1"
+  spec.platform = :ios, "9.0"
   spec.requires_arc = true
   spec.source = { git: "https://github.com/mltbnz/Minions.git", tag: "v#{spec.version}", submodules: true }
   spec.source_files = "Minions/**/*.{h,swift}"

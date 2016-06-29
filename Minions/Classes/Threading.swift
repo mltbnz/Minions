@@ -35,4 +35,22 @@ public class Threading {
         let queue = dispatch_get_global_queue(qos, 0)
         dispatch_after(dispatchTime, queue, closure)
     }
+    
+    /**
+     Executes the closure on a background queue and then runs a task on the main queue
+     
+     - parameter background: clousure to run in the background
+     - parameter main:       clousure to run on the main queue
+     */
+    typealias backgroundTask = () -> ()
+    typealias mainTask = () -> ()
+    func mainToBackground(background: backgroundTask, main: mainTask) {
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            background()
+            dispatch_async(dispatch_get_main_queue()) {
+                main()
+            }
+        }
+    }
 }
