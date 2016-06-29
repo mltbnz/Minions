@@ -8,7 +8,10 @@
 
 import Foundation
 
-public class Threading {
+class Threading {
+    
+    typealias BackgroundTask = () -> ()
+    typealias MainTask = () -> ()
     
     /// Global Helper Functions
     /**
@@ -17,7 +20,7 @@ public class Threading {
      - parameter delay:   Delay in seconds
      - parameter closure: Code to execute after delay
      */
-    public func delayOnMainQueue(delay: Double, clousure: () -> ()) {
+    static func delayOnMainQueue(delay: Double, clousure: MainTask) {
         let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
         let queue = dispatch_get_main_queue()
         dispatch_after(dispatchTime, queue, clousure)
@@ -29,7 +32,7 @@ public class Threading {
      - parameter delay:   Delay in seconds
      - parameter closure: Code to execute after delay
      */
-    public func delayOnBackgroundQueue(delay: Double, closure: () -> ()) {
+    static func delayOnBackgroundQueue(delay: Double, closure: BackgroundTask) {
         let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
         let qos = QOS_CLASS_UTILITY
         let queue = dispatch_get_global_queue(qos, 0)
@@ -42,9 +45,7 @@ public class Threading {
      - parameter background: clousure to run in the background
      - parameter main:       clousure to run on the main queue
      */
-    typealias backgroundTask = () -> ()
-    typealias mainTask = () -> ()
-    func mainToBackground(background: backgroundTask, main: mainTask) {
+    static func mainToBackground(background: BackgroundTask, main: MainTask) {
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
         dispatch_async(dispatch_get_global_queue(priority, 0)) {
             background()

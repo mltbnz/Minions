@@ -9,11 +9,11 @@
 import Foundation
 import UIKit
 
-protocol ReusableView {
+public protocol ReusableView {
     static var reuseIdentifier: String { get }
 }
 
-extension ReusableView where Self: UIViewController {
+public extension ReusableView where Self: UIViewController {
     static var reuseIdentifier: String {
         return String(Self)
     }
